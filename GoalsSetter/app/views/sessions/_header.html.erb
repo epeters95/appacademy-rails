@@ -1,0 +1,8 @@
+<header id="log_in">
+<% if logged_in? %>
+  <%= link_to current_user.username, user_url(current_user) %>
+  <%= button_to "Sign Out", session_url, method: :delete %>
+<% else %>
+  <%= render "sessions/new" %>
+<% end %>
+</header>

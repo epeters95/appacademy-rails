@@ -1,0 +1,37 @@
+<%= @user.username %>'s show page
+<%= link_to "Edit User", edit_user_url(@user) %>
+<br>
+<ul>
+<% @user.goals.each do |goal| %>
+  <li>
+    <span <%='class=completed' if goal.completed? %>>
+      <%= goal.name %>
+    </span>
+    <% if @user == current_user %>
+      <% unless goal.completed? %>
+        <%= button_to "Completed?", goal_url(goal), method: :patch %>
+      <% end %>
+      <%= button_to "Delete Goal", goal_url(goal), method: :delete %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+<br>
+<% if @user == current_user %>
+  <h3>New Goal</h3>
+  <br>
+  <form action="<%= user_goals_url(@user) %>" method="post">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+  
+    <label>
+      Goal<br>
+      <textarea name="goal[name]"></textarea>
+    </label>
+    <br>
+    <button type="submit">New Goal</button>
+  </form>
+<% end %>
+<br>
