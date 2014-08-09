@@ -1,0 +1,19 @@
+<div class="row">
+  
+  <div class="col-xs-4">
+    <h1>Feeds Index</h1>
+
+    <div id = "sessioninfo"></div>
+
+    <ul>
+    <% feeds.each(function(feed) { %>
+      <li><a href="#/feeds/<%=feed.id%>"><%= feed.escape("title") %></a></li>
+      <button class="delete" data-id="<%= feed.id %>">Delete</button>
+    <% }) %>
+    </ul>
+  </div>
+  
+  <div class="col-xs-4">
+    <div id = "form"></div>
+  </div>
+</div>
