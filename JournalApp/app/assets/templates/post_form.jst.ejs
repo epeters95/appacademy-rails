@@ -1,0 +1,17 @@
+<% if (post.get("title")) { %>
+  <h2>Edit Post</h2>
+<% } else { %>
+  <h2>New Post</h2>
+<% } %>
+<form id="edit-form">
+  <label>Title:
+  <input type="text" name="post[title]" value="<%=post.get("title")%>" id="post-title">
+  </label>
+  
+  <label>Body:
+  <input type="text" name="post[body]" value="<%=post.get("body")%>" id="post-body">
+  </label>
+  
+  
+  <input type="submit">
+</form>
